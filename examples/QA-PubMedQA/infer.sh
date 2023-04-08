@@ -2,8 +2,8 @@
 # Licensed under the MIT License.
 
 MODEL_DIR=../../checkpoints/QA-PubMedQA-BioGPT
-MODEL=checkpoint_avg.pt
-DATA_DIR=${PWD}/../../data/PubMedQA/ansis-bin
+MODEL=checkpoint.pt
+DATA_DIR=${PWD}/../../data/PubMedQA/pqal_qcl_ansis-bin
 BASE_DATA_DIR=${DATA_DIR%/*}
 BIN_DATA_DIR=${DATA_DIR##*/}
 DATA_PREFIX=${BIN_DATA_DIR%-*}
@@ -12,12 +12,7 @@ OUTPUT_FILE=generate_${MODEL}
 
 INPUT_FILE=${RAW_DATA_DIR}/${DATA_PREFIX}_test.tok.bpe.x
 OUTPUT_FILE=${MODEL_DIR}/${OUTPUT_FILE}
-GOLD_FILE=${RAW_DATA_DIR}/test.tsv
-
-# average checkpoints
-if [ ! -f "${MODEL_DIR}/${MODEL}" ]; then
-    python ../../scripts/average_checkpoints.py --inputs=${MODEL_DIR} --output=${MODEL_DIR}/${MODEL} --num-epoch-checkpoints=5
-fi
+GOLD_FILE=${RAW_DATA_DIR}/test_ground_truth.json
 
 # inference
 if [ ! -f "$OUTPUT_FILE" ]; then

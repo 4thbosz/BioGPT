@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 DATA_DIR=../../data/PubMedQA
-prefix=biogpt-large-ansis
+prefix=biogpt-large-pqal_qcl_ansis
 RAW_DATA_DIR=${DATA_DIR}/raw
 OUTPUT_DIR=${DATA_DIR}/${prefix}-bin
 
@@ -10,7 +10,7 @@ if [ -d "${OUTPUT_DIR}" ]; then
     rm -rf ${OUTPUT_DIR}
 fi
 
-python rebuild_data_large.py ${RAW_DATA_DIR} ${prefix}
+python rebuild_data.py ${RAW_DATA_DIR} ${prefix}
 
 cp ${DATA_DIR}/../biogpt_large_dict.txt ${RAW_DATA_DIR}/
 cp ${DATA_DIR}/../biogpt_large_bpecodes ${RAW_DATA_DIR}/

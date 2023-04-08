@@ -1,24 +1,19 @@
-# Question Answering on PubMedQA
+# Question Answering on PubMedQA in Reasoning Required Setting
 
 ## Data
-You can process the data by:
+Download data from [PubMedQA](https://github.com/pubmedqa/pubmedqa) and following the steps of splitting dataset.
+
+Copy the files `pqal_fold0/train_set.json`, `pqal_fold0/dev_set.json`, `test_set.json` and `test_ground_truth.json` to `../../data/PubMedQA/raw`
+
+Then, you can process the data by:
 ``` bash
 bash preprocess.sh # for BioGPT
 ```
-or:
+or 
 ``` bash
 bash preprocess_large.sh # for BioGPT-Large
 ```
 
-## Training
-You can fine-tune on the pre-trained models by:
-``` bash
-bash train.sh # for BioGPT
-```
-or 
-``` bash
-bash train_large.sh # for BioGPT-Large
-```
 
 ## Model Checkpoint
 We provide our fine-tuned model on the task. See [here](../../README.md#pre-trained-models)
